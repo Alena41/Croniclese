@@ -16,6 +16,6 @@ CHRONICLES - это удивительный мир с уникальными п
 1.Клонируйте репозиторий 
 git clone https://github.com/Alena41/Croniclese.git
 
-2.Перейдите в курсор с проектом cd Croniclese
-
+2.Перейдите в курсор с проектом 
+cd Croniclese
 3.Запустите main.py python3 main.py
