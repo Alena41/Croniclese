@@ -18,4 +18,5 @@ git clone https://github.com/Alena41/Croniclese.git
 
 2.Перейдите в курсор с проектом 
 cd Croniclese
+
 3.Запустите main.py python3 main.py
