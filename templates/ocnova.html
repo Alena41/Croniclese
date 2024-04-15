@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chronicles</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .img-hover {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .img-hover img {
+            transition: transform 0.5s ease;
+        }
+
+        .img-hover:hover img {
+            transform: scale(1.1);
+        }
+
+        .img-hover-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .img-hover:hover .img-hover-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        .carousel-inner img {
+          height: 80vh;
+          width: 50%;
+        }
+        .carousel {
+            display: block; /* Use block to apply margin */
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%; /* Set the carousel width to 50% */
+        }
+        h3, h5, p {
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: black;
+        }
+        .text-center {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 5);
+        }
+        .img-fluid {
+            width: 80%;
+            height: auto;
+            max-height: 700px;
+        }
+        .img-flu{
+            width: 90%;
+            height: auto;
+            max-height: 400px;
+        {
+
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light position: fixed-top">
+    <a class="navbar-brand">Chronicles</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#container">Информация <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#catalog">Каталог историй</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#card">Соцсети</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/download">Дисклеймер</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('profile') }}">
+                    <img src="{{ url_for('static', filename=current_user.profile_image) }}"
+                         class="navbar-profile-image"
+                         style="width: 50px; height: 50px; object-fit: cover;">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Выйти</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{{ url_for('register') }}">Зарегистрироваться</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('entranc') }}">Войти</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<br><br>
+<br><br>
+
+<div class="container mt-4 card text-black bg-white mb-3" id="container"
+     style="border-radius: 20px; box-shadow: 0 0 100px green;">
+    <h2 style="font-size: 3rem; color: red; text-align: center;">
+        Chronicles</h2>
+    <br><br>
+    <h3 style="font-size: 1rem; color: black;">Вступайте в удивительный мир
+        Chronicles, где каждое ваше действие имеет
+        значение и влияет на ход истории. Вас ждут уникальные персонажи,
+        захватывающие сюжетные линии и
+        разнообразные механики визуальных новелл. Примите участие в
+        увлекательных
+        приключениях, принимайте трудные решения
+        и исследуйте мир, наполненный загадками
+        и тайнами. Ваши выборы определят исход
+        истории, и только от вас зависит, какой конец
+        будет у вашего персонажа. В Chronicles вас ждет
+        неповторимый игровой опыт, который оставит
+        незабываемые впечатления и заставит задуматься
+        о многом. Мир Chronicles полон неожиданных
+        поворотов и сюрпризов, которые
+        поддерживают интерес к игре и мотивируют
+        исследовать его дальше. Игра подходит как для опытных
+        геймеров, так и для новичков в жанре
+        визуальных новелл, благодаря простому и
+        понятному интерфейсу. Присоединяйтесь к сообществу
+        Chronicles и общайтесь с другими игроками, делитесь своими
+        впечатлениями и
+        стратегиями. У нас вы найдете поддержку и
+        вдохновение для прохождения игры и достижения новых вершин. Не упустите
+        возможность
+        погрузиться в увлекательный мир хроник и стать его частью. Добро
+        пожаловать в
+        Chronicles!</h3>
+    <br><br>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="images/photo55.jpg" class="img-flu">
+        </div>
+        <div class="col-md-6">
+            <img src="images/photo56.jpg" class="img-flu">
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="images/photo57.png" class="img-flu">
+        </div>
+        <div class="col-md-6">
+            <img src="images/photo58.png" class="img-flu">
+        </div>
+    </div>
+    <br><br>
+    <br><br>
+</div>
+<br><br>
+
+<div class="abob">
+    <p style="font-size: 3rem; color: white; text-align: center;">Функционал
+        приложения</p>
+    <div id="carouselExampleIndicators" class="carousel slide"
+         data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                class="active"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="5"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="6"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="7"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="8"></li>
+            <li data-target="#carouselExampleIndicators"
+                data-slide-to="9"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/pho1.jpg" class="d-block w-100"
+                     alt="Первое изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho2.jpg" class="d-block w-100"
+                     alt="Второе изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho3.jpg" class="d-block w-100"
+                     alt="Третье изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho4.jpg" class="d-block w-100"
+                     alt="Четвертое изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho5.jpg" class="d-block w-100"
+                     alt="Пятое изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho6.jpg" class="d-block w-100"
+                     alt="Шестое изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho7.jpg" class="d-block w-100"
+                     alt="Седьмое изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho8.jpg" class="d-block w-100"
+                     alt="Восьмое изображение">
+            </div>
+            <div class="carousel-item">
+                <img src="images/pho9.jpg" class="d-block w-100"
+                     alt="Девятое изображение">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators"
+           role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Предыдущий</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators"
+           role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Следующий</span>
+        </a>
+    </div>
+</div>
+
+<br><br>
+
+<div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+        <h5 class="card-title"
+            style="font-size: 2rem; color: white; text-align: center;">Для
+            вашего
+            удобства</h5>
+        <p class="card-text"
+           style="font-size: 1rem; color: white; text-align: center;">
+            Визуальная новелла доступна только через сайт.
+            Пользователи любых устройств, где есть браузер, могут играть в
+            Chronicles.
+        </p>
+        <div style="text-align: center;">
+            <a href="https://chroniclesgame.ru/"
+               style="font-size: 1.5rem; color: yellow;">👉 Chronicles |
+                Твой выбор 👈</a>
+        </div>
+        <p class="card-text"
+           style="font-size: 1rem; color: white; text-align: center;">
+            Настоятельно рекомендуем использовать браузер Chrome, так как он
+            самый стабильный.
+            А чтобы насладиться полностью атмосферой игры, советуем установить
+            страницу Chronicles, как приложение — в правом верхнем углу нажмите
+            на точки и в выпадающем меню выберете пункт "Добавить на главный
+            экран" или "Установить приложение", после установки вы будете
+            полностью погружены в мир "Chronicles".
+        </p>
+    </div>
+</div>
+
+<br><br>
+
+<div class="catalog mt-7 card text-white" id="catalog"
+     style="background-image: url('images/Fon2.jpg'); background-size: cover;
+      background-repeat: no-repeat; box-shadow: 0 0 100px green;">
+    <p class="card-text"
+       style="font-size: 3rem; color: white; text-align: center;">
+        Каталог историй
+    </p>
+    <div class="row card-body">
+        <div class="col-md-4 mb-4">
+            <div class="img-hover">
+                <img src="images/novel1.jpg" class="img-fluid"
+                     alt="Описание изображения">
+                <div class="img-hover-text">
+                    <p>Кассандра наслаждается находиться в центре внимания и
+                        готовится стать королевой бала. Но несчастный случай
+                        заставит девушку согласиться на сделку, которая изменит
+                        ее судьбу. Сможет ли она прожить чужую жизнь, отличить
+                        настоящее от воспоминаний, и раскрыть потенциал,
+                        который заложен в новом для нее теле?</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="img-hover">
+                <img src="images/novel2.jpg" class="img-fluid"
+                     alt="Описание изображения">
+                <div class="img-hover-text">
+                    <p>Волею судьбы студентка была втянута в распри богов и
+                        бессмертных. Вам предстоит распутать множество тайн,
+                        встречаться с реальными историческими личностями,
+                        менять ход истории и понять: так ли прекрасна вечная
+                        жизнь?</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="img-hover">
+                <img src="images/novel3.jpg" class="img-fluid"
+                     alt="Описание изображения">
+                <div class="img-hover-text">
+                    <p>Когда-то вампиры считались мифом, однако нашей героине
+                        во время поисков своего брата, пришлось столкнуться с
+                        монстрами лицом к лицу. Теперь она невольно втянута в
+                        противостояние вампиров и людей, где ей предстоит
+                        распутать не один клубок тайн.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="img-hover">
+                <img src="images/novel4.jpg" class="img-fluid"
+                     alt="Описание изображения">
+                <div class="img-hover-text">
+                    <p>Страну Крейс поразила страшная болезнь - чума. В
+                        условиях эпидемии Генрих работает контрабандистом,
+                        переправляя нуждающихся за границу. Однажды к нему
+                        обратилась группа беженцев. Начавшееся приключение
+                        перевернет не только судьбы героев, но и всей
+                        страны.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="img-hover">
+                <img src="images/novel5.jpg" class="img-fluid"
+                     alt="Описание изображения">
+                <div class="img-hover-text">
+                    <p>Всего нужен миг, чтобы спокойная жизнь превратилась в
+                        хаос. Главная героиня попадает в водоворот интриг,
+                        страсти и криминала в самом сердце Италии. Опасность и
+                        предательства поджидают на каждом углу. Игра
+                        началась!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<center>
+    <h1 class="text-white">Главные герои</h1>
+</center>
+<div class="persons">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="card h-100">
+                <img src="images/Avrora.png"
+                     class="card-img-top img-fluid mx-auto d-block"
+                     alt="Аврора">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Аврора</h5>
+                    <p class="card-text">Дочь смотрителя маяка. Скромная и
+                        милая девушка, пытающаяся выбраться в лучшую жизнь и
+                        которая даже не догадывается о своем страшном
+                        прошлом.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card h-100">
+                <img src="images/Lucy.jpg"
+                     class="card-img-top img-fluid mx-auto d-block" alt="Люси">
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        "Любое имя"</h5>
+                    <p class="card-text">Обычная студентка, которая волею
+                        судьбы была втянута в войну богов и бессмертных. Ей
+                        приходится сражаться с сильными противниками и пытаться
+                        успевать жить обычную жизнь.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card h-100">
+                <img src="images/Genryc.png"
+                     class="card-img-top img-fluid mx-auto d-block"
+                     alt="Генрих">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Генрих</h5>
+                    <p class="card-text">Контрабандист в суровом мире
+                        средневековья охваченного опасной болезнью — чумой. Он
+                        будет бороться за свое выживание до самого конца,
+                        использую любые методы.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card h-100">
+                <img src="images/Kasandra.png"
+                     class="card-img-top img-fluid mx-auto d-block"
+                     alt="Касандра">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Кассандра</h5>
+                    <p class="card-text">Высокомерная старшеклассница, лидер
+                        школьной команды поддержки. Она достигает любых высот,
+                        но что-то помешает ей победить в очередной раз и
+                        расколет создание надвое.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card h-100">
+                <img src="images/GG.png"
+                     class="card-img-top img-fluid mx-auto d-block"
+                     alt="Любое имя">
+                <div class="card-body">
+                    <h5 class="card-title text-center">"Любое имя"</h5>
+                    <p class="card-text">Студентка элитного университета в
+                        самом сердце Италии. Ее жизнью правили высокие
+                        принципы: учеба, совесть. Как же теперь она поступит,
+                        когда на каждом углу ее будут соблазнять пороки и
+                        красивые мужчины?</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card h-100">
+                <img src="images/photo58.png"
+                     class="card-img-top img-fluid mx-auto d-block"
+                     alt="Марго">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Марго</h5>
+                    <p class="card-text">Успешный детектив, не проигравшая ни
+                        одного дела. Она умна и уверена в своих навыках. Однако
+                        таинственная записка переворачивает все, заставляя
+                        докопаться до самой жуткой истины.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="card text-white bg-dark mb-3" id="card">
+    <div class="card-body">
+        <h5 class="card-title"
+            style="font-size: 2rem; color: white; text-align: center;">
+            😊Наши группы в соцсетях😊
+        </h5>
+        <p class="card-text"
+           style="font-size: 1rem; color: white; text-align: center;">
+            <a href="https://t.me/chronicles_game" style="color: white;">
+                Telegram</a>
+        </p>
+        <p class="card-text"
+           style="font-size: 1rem; color: white; text-align: center;">
+            <a href="https://vk.com/chroniclesgame"
+               style="color: white;">VK</a>
+        </p>
+    </div>
+</div>
+{% if current_user.is_authenticated %}
+    <div class="nov text-center" style="color: white;">
+        <h1>Идеи, которые вы нам можете предложить)</h1>
+        <a href="novels" class="btn btn-secondary">Добавить новеллу</a>
+        <a href="all_novels" class="btn btn-secondary">
+            Посмотреть все новеллы</a>
+        {% for item in current_user.novel %}
+        <br><br>
+        <div class="d-flex justify-content-center">
+            <div class="col-md-6 border rounded">
+                <a href="{{ url_for('render_novel', id=item.id) }}">
+                    {{ item.title }}</a>
+                <div>{{ item.content }}</div>
+                <div>
+                    <a href="/novels/{{ item.id }}" class="btn btn-warning">
+                        Изменить
+                    </a>
+                    <a href="/novels_delete/{{ item.id }}"
+                       class="btn btn-danger">
+                        Удалить
+                    </a>
+                </div>
+                <div>
+                    Автор: {{ item.user.name }}
+                </div>
+                <div>
+                    Дата загрузки - {{ item.created_date }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

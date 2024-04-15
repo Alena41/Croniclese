@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #327662;
+        }
+        .card {
+            background: black;
+            color: white;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>{{ data.title }}</h1>
+    <img src="/static/images1/{{ data.id }}">
+    <div>{{ data.content }}</div>
+    <a href="/download_document/{{ data.id }}"><h2>Скачать документ</h2></a>
+</div>
+</body>
+</html>

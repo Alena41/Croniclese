@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .img-upload {
+            object-fit: cover;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('images/photo2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .card-custom {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        #preview {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="card card-custom">
+    <form action="{{ url_for('profile') }}" method="post"
+          enctype="multipart/form-data" class="text-center">
+        <label for="file">Изменить фото профиля:</label>
+        <input type="file" id="file" name="file">
+        <button type="submit" class="btn btn-light btn-block mt-2">Сохранить
+        </button>
+    </form>
+
+    {% if current_user.profile_image %}
+    <img id="preview"
+         src="{{ url_for('static', filename=current_user.profile_image) }}"
+         class="img-upload" alt="Preview Image">
+    {% endif %}
+    <button onclick="returnHome()" class="btn btn-light btn-block mt-3">На
+        главный экран
+    </button>
+</div>
+
+<script>
+    function returnHome() {
+        window.location.href = "/";
+    }
+</script>
+</body>
+</html>
